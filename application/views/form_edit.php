@@ -9,28 +9,28 @@
 <body>
   <div class="container">
     <h1>Ubah Produk</h1>
-    <form method="post" action="proses_ubah.php?id=<?php echo $id; ?>">
+    <form method="post" action="<?php echo base_url('Welcome/editAction/') . $data_product->id ?>">
       <table class="table table-striped table-borderless">
         <tr>
           <td>nama_produk</td>
-          <td><input type="text" name="nama_produk" value="<?php echo $data['nama_produk']; ?>"></td>
+          <td><input type="text" name="nama_produk" value="<?php echo $data_product->nama_produk ?>" required></td>
         </tr>
         <tr>
           <td>keterangan</td>
-          <td><input type="text" name="keterangan" value="<?php echo $data['keterangan']; ?>"></td>
+          <td><textarea name="keterangan" required> <?php echo $data_product->keterangan ?></textarea></td>
         </tr>
         <tr>
           <td>harga</td>
-          <td><input type="text" name="harga" value="<?php echo $data['harga']; ?>"></td>
+          <td><input type="number" name="harga" value="<?php echo $data_product->harga ?>" required></td>
         </tr>
         <tr>
           <td>jumlah</td>
-          <td><textarea name="jumlah"><?php echo $data['jumlah']; ?></textarea></td>
+          <td><input type="number" name="jumlah" value="<?php echo $data_product->jumlah ?>" required></td>
         </tr>
       </table>
       <hr>
-      <input type="submit" class="btn btn-success" value="Ubah">
-      <a href="index.php" class="btn btn-secondary pull-right" role="button">Batal</a>
+      <input type="submit" class="btn btn-success" value="Simpan">
+      <a href="<?php echo base_url('Welcome/') ?>" class="btn btn-secondary pull-right" role="button">Batal</a>
     </form>
   </div>
 </body>

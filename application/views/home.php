@@ -23,33 +23,33 @@
       <tbody>
         <?php
         $count = 0;
-        foreach ($data_produk as $row) {
+        foreach ($data_product as $row) {
           $count = $count + 1;
-        
 
-        // cara 1
-        
-        // echo "<tr>";
-        // echo "<td>" . $row->nama_produk . "</td>";
-        // echo "<td>" . $row->keterangan . "</td>";
-        // echo "<td>" . $row->harga . "</td>";
-        // echo "<td>" . $row->jumlah . "</td>";
-        // echo "<td><a class='btn btn-outline-secondary' href='form_ubah.php?id=" . $row->id . "'><i class='fa fa-edit'></i></a> <a class='btn btn-outline-danger' href='proses_hapus.php?id=" . $row->id . "'><i class='fa fa-trash danger'></i></a></td>";
-        // echo "</tr>";
-        // }
+
+          // cara 1
+
+          // echo "<tr>";
+          // echo "<td>" . $row->nama_produk . "</td>";
+          // echo "<td>" . $row->keterangan . "</td>";
+          // echo "<td>" . $row->harga . "</td>";
+          // echo "<td>" . $row->jumlah . "</td>";
+          // echo "<td><a class='btn btn-outline-secondary' href='form_ubah.php?id=" . $row->id . "'><i class='fa fa-edit'></i></a> <a class='btn btn-outline-danger' href='proses_hapus.php?id=" . $row->id . "'><i class='fa fa-trash danger'></i></a></td>";
+          // echo "</tr>";
+          // }
         ?>
 
-        <!-- caradua -->
-        <tr>
-          <td><?php echo $row->nama_produk ?> </td>
-          <td><?php echo $row->keterangan ?> </td>
-          <td><?php echo $row->harga ?> </td>
-          <td><?php echo $row->jumlah ?> </td>
-          <td>
-            <a class='btn btn-outline-secondary' href="<?php echo base_url('Welcome/formEdit') ?>"><i class='fa fa-edit'></i></a>
-            <a class='btn btn-outline-danger' href=""><i class='fa fa-trash danger'></i></a>
-          </td>
-        </tr>
+          <!-- caradua -->
+          <tr>
+            <td><?php echo $row->nama_produk ?> </td>
+            <td><?php echo $row->keterangan ?> </td>
+            <td><?php echo $row->harga ?> </td>
+            <td><?php echo $row->jumlah ?> </td>
+            <td>
+              <a class='btn btn-outline-secondary' href="<?php echo base_url('Welcome/formEdit/').$row->id ?>"><i class='fa fa-edit'></i></a>
+              <a class='btn btn-outline-danger' href="<?php echo base_url('Welcome/deleteAction/').$row->id ?>"><i class='fa fa-trash danger'></i></a>
+            </td>
+          </tr>
         <?php } ?>
       </tbody>
     </table>

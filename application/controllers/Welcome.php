@@ -12,7 +12,7 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		$recordProduct = $this->M_Product->getDataProduct();
-		$DATA = array('data_produk' => $recordProduct);
+		$DATA = array('data_product' => $recordProduct);
 		$this->load->view('home', $DATA);
 	}
 
@@ -27,7 +27,7 @@ class Welcome extends CI_Controller
 		$arrayInsert = array(
 			'nama_produk' => $nama_produk,
 			'keterangan' => $keterangan,
-			'harga' => $harga, 
+			'harga' => $harga,
 			'jumlah' => $jumlah,
 		);
 
@@ -42,8 +42,41 @@ class Welcome extends CI_Controller
 	{
 		$this->load->view('form_input');
 	}
-	public function formEdit()
+
+	// untuk edit data
+	public function editAction($id){
+		$nama_produk = $this->input->post('nama_produk');
+		$keterangan = $this->input->post('keterangan');
+		$harga = $this->input->post('harga');
+		$jumlah = $this->input->post('jumlah');
+
+		$arrayUpdate = array(
+			'nama_produk' => $nama_produk,
+			'keterangan' => $keterangan,
+			'harga' => $harga,
+			'jumlah' => $jumlah,
+		);
+
+		// echo "<pre>";
+		// print_r($arrayInsert);
+		// echo "</pre>";
+		// echo "masuk input";
+		$this->M_Product->editDataProduct($arrayUpdate,$id);
+		redirect(base_url('Welcome'));
+	}
+	public function formEdit($id)
 	{
-		$this->load->view('form_edit');
+		$detailProduct = $this->M_Product->getDetailDataProduct($id);
+		// echo "<pre>";
+		// print_r($detailProduct);
+		// echo "</pre>";
+		$DATA = array('data_product' => $detailProduct);
+		$this->load->view('form_edit',$DATA);
+	}
+
+	// untuk hapus data
+	public function deleteAction($id){
+		$this->M_Product->deleteDataProduct($id);
+		redirect(base_url());
 	}
 }
